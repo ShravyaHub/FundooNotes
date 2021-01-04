@@ -1,0 +1,7 @@
+app-icons {
+    display: none;
+}
+
+mat-card:hover app-icons{
+    display: block;
+  }

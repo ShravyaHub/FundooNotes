@@ -1,0 +1,66 @@
+<div fxLayoutAlign="center">
+  <form class="form" [formGroup]="registerForm" (ngSubmit)="signUp(registerForm.value)" fxLayoutAlign="row">
+    <div class="form-div">
+      <div class = "form-head" fxLayoutAlign="center">
+        <span style='color: #1A73E8'>F</span>
+        <span style='color: red'>u</span>
+        <span style='color: yellow'>n</span>
+        <span style='color: #1A73E8'>d</span>
+        <span style='color: green'>o</span>
+        <span style='color: red'>o</span>
+      </div>
+      <div class="title-head" fxLayoutAlign="center">Create your Fundoo Account</div>
+      <div fxLayout.xs="column" fxLayoutAlign="space-between">
+        <mat-form-field appearance="outline" class="textbox">
+          <mat-label>First name</mat-label>
+          <input matInput type="text" formControlName="firstName" id="fisrtName"
+            [ngClass]="{ 'is-invalid': submitted && registerForm.controls.firstName.errors }">
+          <!-- <mat-error *ngIf="registerForm.controls.firstName.errors.required" class="error-text">First name is required</mat-error> -->
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="textbox">
+          <mat-label>Last name</mat-label>
+          <input matInput type="text" formControlName="lastName" id="lastName"
+            [ngClass]="{ 'is-invalid': submitted && registerForm.controls.lastName.errors }">
+          <!-- <mat-error *ngIf="registerForm.controls.lastName.errors.required" class="error-text">Last name is required</mat-error> -->
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline" class="email">
+          <mat-label>Email</mat-label>
+          <input matInput type="text" formControlName="email" id="email"
+            [ngClass]="{ 'is-invalid': submitted && registerForm.controls.email.errors }">
+          <!-- <mat-error *ngIf="registerForm.controls.email.errors.required" class="error-text">Email is required</mat-error>
+          <mat-error *ngIf="registerForm.controls.email.errors.email" class="error-text">Email must be a valid email address</mat-error> -->
+        </mat-form-field>
+      </div>
+      <div fxLayout.xs="column" fxLayoutAlign="space-between">
+        <mat-form-field appearance="outline" class="textbox">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password" id="password"
+            [ngClass]="{ 'is-invalid': submitted && registerForm.controls.password.errors }">
+          <!-- <mat-error *ngIf="registerForm.controls.password.errors.required" class="error-text">Password is required</mat-error>
+          <mat-error *ngIf="registerForm.controls.password.errors.mustMatch" class="error-text">Password must be at least 6 characters</mat-error> -->
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="textbox">
+          <mat-label>Confirm Password</mat-label>
+          <input matInput type="text" formControlName="confirmPassword" id="confirmPassword"
+            [ngClass]="{ 'is-invalid': submitted && registerForm.controls.confirmPassword.errors }">
+          <!-- <mat-error *ngIf="registerForm.controls.confirmPassword.errors.required" class="error-text">Confirm password is required</mat-error>
+          <mat-error *ngIf="registerForm.controls.confirmPassword.errors.mustMatch" class="error-text">Passwords must match</mat-error> -->
+        </mat-form-field>
+      </div>
+      <div>
+        <label>
+          <input class="show-password" type="checkbox"> Show Password
+        </label>
+      </div>
+      <div class="button-div" fxLayoutAlign="space-between center">
+        <a routerLink="../signIn" class="link-text">Sign in instead</a>
+        <input class="next-button" type="submit" value="Next" [style.fontSize.px]="11">
+      </div>
+    </div>
+    <div class="image-div" fxLayoutAlign="center center">
+      <img src="../../../assets/google.svg" >
+    </div>
+  </form>
+</div>

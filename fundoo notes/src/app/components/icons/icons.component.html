@@ -1,0 +1,16 @@
+<div fxLayoutAlign="space-between">
+<span class="material-icons">add_alert</span>
+<span class="material-icons">supervisor_account</span>
+<span class="material-icons">palette</span>
+<span class="material-icons">panorama</span>
+<span class="material-icons">archive</span>
+<span [matMenuTriggerFor]="menu" #menuTrigger class="material-icons">more_vert</span>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="deleteNote()">Delete note</button>
+  <button mat-menu-item>Add label</button>
+  <button mat-menu-item>Add drawing</button>
+  <button mat-menu-item>Make a copy</button>
+  <button mat-menu-item>Show checkboxes</button>
+  <button mat-menu-item>Copy to Google Docs</button>
+</mat-menu>
+</div>
