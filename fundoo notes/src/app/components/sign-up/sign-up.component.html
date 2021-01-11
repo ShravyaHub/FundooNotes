@@ -13,22 +13,19 @@
       <div fxLayout.xs="column" fxLayoutAlign="space-between">
         <mat-form-field appearance="outline" class="textbox">
           <mat-label>First name</mat-label>
-          <input matInput type="text" formControlName="firstName" id="fisrtName"
-            [ngClass]="{ 'is-invalid': submitted && registerForm.controls.firstName.errors }">
+          <input matInput type="text" formControlName="firstName" id="fisrtName" [ngClass]="{ 'is-invalid': submitted && registerForm.controls.firstName.errors }">
           <!-- <mat-error *ngIf="registerForm.controls.firstName.errors.required" class="error-text">First name is required</mat-error> -->
         </mat-form-field>
         <mat-form-field appearance="outline" class="textbox">
           <mat-label>Last name</mat-label>
-          <input matInput type="text" formControlName="lastName" id="lastName"
-            [ngClass]="{ 'is-invalid': submitted && registerForm.controls.lastName.errors }">
+          <input matInput type="text" formControlName="lastName" id="lastName" [ngClass]="{ 'is-invalid': submitted && registerForm.controls.lastName.errors }">
           <!-- <mat-error *ngIf="registerForm.controls.lastName.errors.required" class="error-text">Last name is required</mat-error> -->
         </mat-form-field>
       </div>
       <div>
         <mat-form-field appearance="outline" class="email">
           <mat-label>Email</mat-label>
-          <input matInput type="text" formControlName="email" id="email"
-            [ngClass]="{ 'is-invalid': submitted && registerForm.controls.email.errors }">
+          <input matInput type="text" formControlName="email" id="email" [ngClass]="{ 'is-invalid': submitted && registerForm.controls.email.errors }">
           <!-- <mat-error *ngIf="registerForm.controls.email.errors.required" class="error-text">Email is required</mat-error>
           <mat-error *ngIf="registerForm.controls.email.errors.email" class="error-text">Email must be a valid email address</mat-error> -->
         </mat-form-field>
@@ -36,15 +33,13 @@
       <div fxLayout.xs="column" fxLayoutAlign="space-between">
         <mat-form-field appearance="outline" class="textbox">
           <mat-label>Password</mat-label>
-          <input matInput type="password" formControlName="password" id="password"
-            [ngClass]="{ 'is-invalid': submitted && registerForm.controls.password.errors }">
+          <input matInput type="password" formControlName="password" id="password" [ngClass]="{ 'is-invalid': submitted && registerForm.controls.password.errors }">
           <!-- <mat-error *ngIf="registerForm.controls.password.errors.required" class="error-text">Password is required</mat-error>
           <mat-error *ngIf="registerForm.controls.password.errors.mustMatch" class="error-text">Password must be at least 6 characters</mat-error> -->
         </mat-form-field>
         <mat-form-field appearance="outline" class="textbox">
           <mat-label>Confirm Password</mat-label>
-          <input matInput type="text" formControlName="confirmPassword" id="confirmPassword"
-            [ngClass]="{ 'is-invalid': submitted && registerForm.controls.confirmPassword.errors }">
+          <input matInput type="text" formControlName="confirmPassword" id="confirmPassword" [ngClass]="{ 'is-invalid': submitted && registerForm.controls.confirmPassword.errors }">
           <!-- <mat-error *ngIf="registerForm.controls.confirmPassword.errors.required" class="error-text">Confirm password is required</mat-error>
           <mat-error *ngIf="registerForm.controls.confirmPassword.errors.mustMatch" class="error-text">Passwords must match</mat-error> -->
         </mat-form-field>

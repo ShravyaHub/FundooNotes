@@ -1,52 +1,52 @@
 .menu-icon {
-    border: 0px;
-    background-color: white;
-    color: #5F6368;
+  border: 0px;
+  background-color: white;
+  color: #5F6368;
 }
 
 .example-spacer {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
 .menu-icon {
-    outline: none;
+  outline: none;
 }
 
 .toolbar {
-    background-color: white;
+  background-color: white;
 }
 
 .title-text {
-    color: #5F6368;
+  color: #5F6368;
 }
 
 .search-div {
-    margin-left: 50px;
-    padding: 20px;
+  margin-left: 50px;
+  padding: 20px;
 }
 
 .search, .search-div {
-    width: 700px;
-    height: 45px;
-    background-color: #F1F3F4;
-    border: #F1F3F4;
-    border-radius: 8px;
-    outline: none;
+  width: 700px;
+  height: 45px;
+  background-color: #F1F3F4;
+  border: #F1F3F4;
+  border-radius: 8px;
+  outline: none;
 }
 
 img {
-    padding-right: 5px;
-    height: 40px;
+  padding-right: 5px;
+  height: 40px;
 }
 
 .material-icons {
-    padding-right: 20px;
-    color: #5F6368;
+  padding-right: 20px;
+  color: #5F6368;
 }
 
 .options {
-    font-size: 21px/16px bold Roboto;
-    padding: 10px 10px 10px 20px;
+  font-size: 21px/16px bold Roboto;
+  padding: 10px 10px 10px 20px;
 }
 
 .side-menu {
@@ -54,43 +54,85 @@ img {
 }
 
 .material-icons-outlined, button {
-    border: 0px;
-    background-color: white;
+  border: 0px;
+  background-color: transparent;
 }
 
 .example-container {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 
-  .main {
-    background-color: white;
-    padding: 40px;
-  }
+.main {
+  background-color: white;
+  padding: 40px;
+}
   
-  .example-is-mobile .toolbar {
-    position: fixed;
-    /* Make sure the toolbar will stay on top of the content as it scrolls past. */
-    z-index: 2;
-  }
+.example-is-mobile .toolbar {
+  position: fixed;
+  z-index: 2;
+}
   
-  h1.example-app-name {
-    margin-left: 8px;
-  }
+h1.example-app-name {
+  margin-left: 8px;
+}
   
-  .example-sidenav-container {
-    /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
-       causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
-    flex: 1;
-  }
+.example-sidenav-container {
+  flex: 1;
+}
   
-  .example-is-mobile .example-sidenav-container {
-    /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
-       `<body>` to be our scrolling element for mobile layouts. */
-    flex: 1 0 auto;
-  }
+.example-is-mobile .example-sidenav-container {
+  flex: 1 0 auto;
+}
+
+mat-sidenav:not(.mat-drawer-opened) {
+  transform: translate3d(0, 0, 0) !important;
+  visibility: visible !important;
+  width: 60px !important;
+  overflow: hidden;
+}
+
+mat-sidenav:not(.mat-drawer-opened) div.leftNav div.navProfile img {
+  width: 40px; margin: 16px 0 0px 0;
+  overflow: hidden;
+}
+
+mat-sidenav:not(.mat-drawer-opened) .navTitle, mat-sidenav:not(.mat-drawer-opened) .profileTitle {
+  display: none;
+  overflow: hidden;
+}
+
+.active-list-item {
+  background: #FEEFC3;
+  width: 280px;
+  border-radius: 0 100px 100px 0; 
+}
+
+mat-sidenav:not(.mat-drawer-opened) .active-list-item {
+  background: #FEEFC3;
+  width: 49px;
+  border-radius: 200px 200px 200px 200px; 
+  margin-left: 5px;
+  padding-left:12px;
+}
+
+mat-sidenav::-webkit-scrollbar {
+  display: none;
+}
+
+button {
+  padding-left: 0px;
+}
+
+button:focus {
+  outline: none;
+}
+
+button, mat-icon {
+  background-color: transparent;
+}

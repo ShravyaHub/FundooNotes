@@ -14,8 +14,7 @@
       <div>
         <mat-form-field appearance="outline" class="textbox">
           <mat-label>Email</mat-label>
-          <input matInput type="text" formControlName="email" id="email" class="form-control" 
-            [ngClass]="{ 'is-invalid': submitted && signInForm.controls.email.errors }">
+          <input matInput type="text" formControlName="email" id="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && signInForm.controls.email.errors }">
           <!-- <mat-error *ngIf="signInForm.controls.email.errors.required" class="error-text">Email is required</mat-error>
           <mat-error *ngIf="signInForm.controls.email.errors.email" class="error-text">Email must be a valid email address</mat-error> -->
         </mat-form-field>
@@ -23,9 +22,10 @@
       <div>
         <mat-form-field appearance="outline" class="textbox">
           <mat-label>Password</mat-label>
-          <input matInput type="password" formControlName="password" id="password" 
-            [ngClass]="{ 'is-invalid': submitted && signInForm.controls.password.errors }">
-          <mat-hint><a routerLink="../forgotPassword" class="link-text" style="color: #1A73E8;">Forgot password?</a></mat-hint>
+          <input matInput type="password" formControlName="password" id="password" [ngClass]="{ 'is-invalid': submitted && signInForm.controls.password.errors }">
+          <mat-hint>
+            <a routerLink="../forgotPassword" class="link-text" style="color: #1A73E8;">Forgot password?</a>
+          </mat-hint>
           <!-- <mat-error *ngIf="signInForm.controls.password.errors.required" class="error-text">Password is required</mat-error> -->
         </mat-form-field>
       </div>

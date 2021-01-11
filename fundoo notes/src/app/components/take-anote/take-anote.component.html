@@ -1,35 +1,29 @@
 <div fxLayoutAlign="center center">
-    <mat-card   class="view1 new-note" *ngIf="isOpen " (click)="isOpen = !isOpen" >
-      <div  fxLayout="row" fxLayoutAlign="space-between center" >
-        <div>Take a note...</div>
-      </div>
-    </mat-card>
-  <mat-card class="new-note" *ngIf="!isOpen " class="takeNote" style="width: 600px">
-      <div fxLayout="column">
-        <div >
-          <div fxLayout="row" fxLayoutAlign="space-between center">
-            <div>
-              <textarea style="border: 0px;" class="note-text" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"  placeholder="Title" [(ngModel)]="title"></textarea>
-            </div>
-          </div>
-  
+  <mat-card   class="view1 new-note" *ngIf="isOpen" (click)="isOpen = !isOpen">
+    <div  fxLayout="row" fxLayoutAlign="space-between center">
+      <div class="takenote">Take a note...</div>
+    </div>
+  </mat-card>
+ <mat-card class="new-note" *ngIf="!isOpen " class="takeNote" style="width: 600px" [ngStyle]="{'background-color': color}">
+    <div fxLayout="column">
+      <div >
+        <div fxLayout="row" fxLayoutAlign="space-between center">
           <div>
-            <textarea style="border: 0px;" class="note-text" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"  placeholder="Take a note..."
-              [(ngModel)]="description"></textarea>
-          </div>
-          
-        </div>
-  
-      
-       
-        <div fxLayout="row" fxFlex="100" fxLayoutAlign="space-between center">
-          <div fxFlex="60">
-            <app-icons></app-icons>
-          </div>
-          <div>
-            <button style="background-color: white; border: 0px;" mat-icon-button matSuffix (click)="addNote()">close</button>
+            <textarea style="border: 0px;" class="note-text" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"  placeholder="Title" [(ngModel)]="title"></textarea>
           </div>
         </div>
+        <div>
+          <textarea style="border: 0px;" class="note-text" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"  placeholder="Take a note..." [(ngModel)]="description"></textarea>
+        </div>
       </div>
-    </mat-card>
-  </div>
+      <div fxLayout="row" fxFlex="100" fxLayoutAlign="space-between center">
+        <div fxFlex="60">
+          <app-icons [title]="title" [description]="description" [createNote]="myMethodFunc"></app-icons>
+        </div>
+        <div>
+          <button style="background-color: white; border: 0px;" mat-icon-button matSuffix (click)="createNote()">close</button>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>

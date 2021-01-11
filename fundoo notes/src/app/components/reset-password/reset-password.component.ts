@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MustMatch } from "./must-match.validator";
 import { UserServiceService } from '../../services/userService/user-service.service';
 import { ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import {Router } from '@angular/router';
 
 @Component({
   selector: 'app-reset-password',
@@ -11,12 +13,15 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class ResetPasswordComponent implements OnInit {
-  resetPasswordForm!: FormGroup;
-  submitted = false;
-  token: any;
+  resetPasswordForm!:FormGroup;
+  submitted=false;
+  token:any;
   
-  constructor(private formBuilder: FormBuilder, private userService: UserServiceService, 
-    private activatedRoute: ActivatedRoute) {}
+  constructor(private formBuilder: FormBuilder, 
+              private route: Router, 
+              private snackBar: MatSnackBar, 
+              private userService: UserServiceService, 
+              private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
     this.resetPasswordForm = this.formBuilder.group({
@@ -27,7 +32,7 @@ export class ResetPasswordComponent implements OnInit {
     });
   }
 
-  resetPassword=(resetPasswordFormValue: { password: any; })=> {
+  resetPassword=(resetPasswordFormValue: { password:any; })=> {
     this.submitted = true;
 
     if (this.resetPasswordForm.invalid) return;
@@ -35,9 +40,11 @@ export class ResetPasswordComponent implements OnInit {
     const newPassword = { 'newPassword': resetPasswordFormValue.password }
 
     this.token = this.activatedRoute.snapshot.paramMap.get('token');
-    console.log(this.token);
-    this.userService.resetPassword(newPassword, this.token).subscribe((response: any) => {
-      console.log("Successful password reset: ", response);
+    localStorage.setItem("token", this.token);
+    this.userService.resetPassword(newPassword, this.token).subscribe((response:any) => {
+      this.snackBar.open("Password reset successful");
+      this.route.navigate(['/signIn']);
+      localStorage.removeItem("token");
     });
   }
 }

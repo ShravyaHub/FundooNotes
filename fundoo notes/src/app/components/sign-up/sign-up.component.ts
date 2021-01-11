@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MustMatch } from "./must-match.validator";
 import { UserServiceService } from '../../services/userService/user-service.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-sign-up',
@@ -11,10 +12,13 @@ import { Router } from '@angular/router';
 })
 
 export class SignUpComponent implements OnInit {
-  registerForm!: FormGroup;
-  submitted = false;
+  registerForm!:FormGroup;
+  submitted=false;
 
-  constructor(private formBuilder: FormBuilder, private userService: UserServiceService, private route: Router) {}
+  constructor(private formBuilder: FormBuilder, 
+              private snackBar: MatSnackBar, 
+              private userService: UserServiceService, 
+              private route: Router) {}
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -28,10 +32,10 @@ export class SignUpComponent implements OnInit {
       });
     }
 
-  signUp=(signUpFormValue: { firstName: any; lastName: any; email: any; password: any; })=> {
-    this.submitted = true;
+  signUp=(signUpFormValue: { firstName:any; lastName:any; email:any; password:any; })=> {
+    this.submitted=true;
 
-      if (this.registerForm.invalid) return;
+    if (this.registerForm.invalid) return;
 
     let newUser={
       firstName: signUpFormValue.firstName,
@@ -41,8 +45,8 @@ export class SignUpComponent implements OnInit {
       service: 'advance'
     }
 
-    this.userService.registerUser(newUser).subscribe((response: any) => {
-      console.log("Successful sign up: ", response);
+    this.userService.registerUser(newUser).subscribe((response:any) => {
+      this.snackBar.open("Sign up");
       this.route.navigate(['/signIn']);
     });
   }

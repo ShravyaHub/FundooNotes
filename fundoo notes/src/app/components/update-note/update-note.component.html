@@ -1,15 +1,14 @@
-<div style="width: 600px;">
+<div style="width: 600px;" [ngStyle]="{'background-color': color}">
     <div>
-        <input matInput mat-dialog-title [(ngModel)]="data.title" style="border: none; outline: none;" >
+        <input matInput mat-dialog-title [(ngModel)]="title" style="border: none; outline: none;" >
     </div>
     <div>
-        <input matInput [(ngModel)]="data.description" style="border: none;outline: none;">
-   
-    <div mat-dialog-actions fxLayoutAlign="space-between">
-        <div fxLayoutAlign="space-between">
-            <!-- <app-icons></app-icons> -->
+        <input matInput [(ngModel)]="description" style="border: none;outline: none;">
+        <div mat-dialog-actions fxLayoutAlign="space-between">
+            <div fxLayoutAlign="space-between">
+                <app-icons [selectedID]="id"></app-icons>
+            </div>
+            <button mat-button (click)="editNotes()">Close</button>
         </div>
-        <button mat-button (click)="editNotes()">Close</button>
     </div>
-</div>
 </div>

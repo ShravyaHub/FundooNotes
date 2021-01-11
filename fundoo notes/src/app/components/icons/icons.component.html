@@ -1,16 +1,33 @@
-<div fxLayoutAlign="space-between">
-<span class="material-icons">add_alert</span>
-<span class="material-icons">supervisor_account</span>
-<span class="material-icons">palette</span>
-<span class="material-icons">panorama</span>
-<span class="material-icons">archive</span>
-<span [matMenuTriggerFor]="menu" #menuTrigger class="material-icons">more_vert</span>
-<mat-menu #menu="matMenu">
-  <button mat-menu-item (click)="deleteNote()">Delete note</button>
-  <button mat-menu-item>Add label</button>
-  <button mat-menu-item>Add drawing</button>
-  <button mat-menu-item>Make a copy</button>
-  <button mat-menu-item>Show checkboxes</button>
-  <button mat-menu-item>Copy to Google Docs</button>
-</mat-menu>
+<div fxLayoutAlign="row">
+  <button class="material-icons" matTooltip="Remind me">add_alert</button>
+  <button class="material-icons" matTooltip="Collaborator">supervisor_account</button>
+  <button [matMenuTriggerFor]="colormenu" #menuTrigger class="material-icons" matTooltip="Change color">palette</button>
+  <mat-menu #colormenu="matMenu">
+    <div fxLayoutAlign="row">
+      <div *ngFor="let item of colorGroup1">
+        <button class="colorButton" mat-mini-fab mat-button [ngStyle]="{'background-color': item}" (click)="noteColor(item)"></button>
+      </div>
+    </div>
+    <div fxLayoutAlign="row">
+      <div *ngFor="let item of colorGroup2">
+        <button class="colorButton" mat-mini-fab mat-button [ngStyle]="{'background-color': item}" (click)="noteColor(item)"></button>
+      </div>
+    </div>
+    <div fxLayoutAlign="row">
+      <div *ngFor="let item of colorGroup3">
+        <button class="colorButton" mat-mini-fab mat-button [ngStyle]="{'background-color': item}" (click)="noteColor(item)"></button>
+      </div>
+    </div>
+  </mat-menu>
+  <button class="material-icons" matTooltip="Add image">panorama</button>
+  <button class="material-icons" (click)="archiveNote()" matTooltip="Archive">archive</button>
+  <button [matMenuTriggerFor]="menu" #menuTrigger class="material-icons" matTooltip="More">more_vert</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="deleteNote()">Delete note</button>
+    <button mat-menu-item>Add label</button>
+    <button mat-menu-item>Add drawing</button>
+    <button mat-menu-item>Make a copy</button>
+    <button mat-menu-item>Show checkboxes</button>
+    <button mat-menu-item>Copy to Google Docs</button>
+  </mat-menu>
 </div>

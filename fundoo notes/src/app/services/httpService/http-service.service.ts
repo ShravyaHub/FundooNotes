@@ -2,28 +2,32 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-
 @Injectable({
   providedIn: 'root'
 })
 
 export class HttpServiceService {
-  [x: string]: any;
-  baseURL = environment.baseURL;
+  [x:string]:any;
+  baseURL=environment.baseURL;
+  token:any;
 
   constructor(private http: HttpClient) {}
 
-  token: any;
+  userPost(url:string, data:any) { return this.http.post(this.baseURL + url, data); }
 
   post(url: string, data: any) {
-
-    this.token=localStorage.getItem('token');
-    console.log("Data in HTTP: ", data);
-    return this.http.post(this.baseURL + url, data);
+    let options={
+      headers:new HttpHeaders({
+        'Authorization':this.token,
+        'Content-Type':'application/json'
+      })
+    }
+    console.log(data);
+    return this.http.post(this.baseURL + url, data, options);
   }
 
-  encode(data: any) {
-    const formBody = [];
+  encode(data:any) {
+    const formBody=[];
     for (const property in data) {
       const encodedKey = encodeURIComponent(property);
       const encodedValue = encodeURIComponent(data[property]);
@@ -32,25 +36,24 @@ export class HttpServiceService {
     return formBody.join('&');
   }
 
-  encodedPost(url: any, data: any) {
+  encodedPost(url:any, data:any) {
+    console.log(data);
     this.token=localStorage.getItem("token");
-    console.log(this.token);
-    let options = {
-      headers: new HttpHeaders({
-        'Authorization': this.token,
-        'Content-Type': 'application/x-www-form-urlencoded'
+    let options={
+      headers:new HttpHeaders({
+        'Authorization':this.token,
+        'Content-Type':'application/x-www-form-urlencoded'
       })
     }
     return this.http.post(this.baseURL + url, this.encode(data), options)
   }
-  get(url: any) {
-    this.token=localStorage.getItem('token');
-    console.log(this.token);
-    let options = {
-      headers: new HttpHeaders({
-        'Authorization': this.token,
-        'Content-Type': 'application/x-www-form-urlencoded'
 
+  get(url:any) {
+    this.token=localStorage.getItem('token');
+    let options={
+      headers:new HttpHeaders({
+        'Authorization':this.token,
+        'Content-Type':'application/x-www-form-urlencoded'
       })
     }
     return this.http.get(this.baseURL + url, options);

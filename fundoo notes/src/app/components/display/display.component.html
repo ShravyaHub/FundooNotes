@@ -1,9 +1,16 @@
-<div *ngFor="let item of data" style="display: inline-block">
-    <mat-card style="width: 200px; margin-top: 30px; margin-left: 20px;">
-        <p (click)="openDialog(item)">{{item.title}}</p>
-        <p (click)="openDialog(item)">{{item.description}}</p>
-        <div>
-        <app-icons></app-icons>
+<div fxLayoutAlign="center">
+    <div class="card-div" [ngClass]="{'card-list-div': value}">
+        <div *ngFor="let item of noteArray" >
+            <mat-card class="card-class" [ngClass]="{'mat-card-list': value}" [ngStyle]="{'background-color': item.color}">
+                <p (click)="openDialog(item)">{{item.title}}</p>
+                <p (click)="openDialog(item)">{{item.description}}</p>
+                <div class="icons-div">
+                    <app-icons [hidden]="trashed" [note]="item"></app-icons>
+                    <div class="delete-icon" [hidden]="!trashed" (click)="deleteNoteForever()">
+                        <button class="material-icons delete-icon">delete_forever</button>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
     </div>
-    </mat-card>
 </div>

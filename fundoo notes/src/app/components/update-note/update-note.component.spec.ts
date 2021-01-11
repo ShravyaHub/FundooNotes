@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { UpdateNoteComponent } from './update-note.component';
 
 describe('UpdateNoteComponent', () => {

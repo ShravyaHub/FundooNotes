@@ -26,6 +26,9 @@ import { DisplayComponent } from './components/display/display.component';
 import { IconsComponent } from './components/icons/icons.component';
 import { UpdateNoteComponent } from './components/update-note/update-note.component';
 import { MatDialogModule, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import {MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS} from '@angular/material/snack-bar';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { AuthGuardServiceService} from '../app/services/AuthGuardService/auth-guard-service.service';
 
 @NgModule({
   declarations: [
@@ -57,11 +60,16 @@ import { MatDialogModule, MAT_DIALOG_DATA, MatDialogRef } from '@angular/materia
     MatListModule,
     MatMenuModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule,
+    MatTooltipModule
   ],
   providers: [
     { provide: MAT_DIALOG_DATA, useValue: {} },
-    { provide: MatDialogRef, useValue: {} }
+    { provide: MatDialogRef, useValue: {} },
+    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2000}},
+    AuthGuardServiceService,
+    TakeANoteComponent
   ],
   bootstrap: [AppComponent]
 })

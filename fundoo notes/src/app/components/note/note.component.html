@@ -1,4 +1,2 @@
-
-<app-take-anote></app-take-anote>
-<app-display></app-display>
-<!-- <app-update-note></app-update-note> -->
+<app-take-anote [hidden]="!edited"></app-take-anote>
+<app-display [noteArray]="data"></app-display>

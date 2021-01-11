@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserServiceService } from '../../services/userService/user-service.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-sign-in',
@@ -10,10 +11,13 @@ import { Router } from '@angular/router';
 })
 
 export class SignInComponent implements OnInit {
-  signInForm!: FormGroup;
-  submitted = false;
+  signInForm!:FormGroup;
+  submitted=false;
 
-  constructor(private formBuilder: FormBuilder, private userService: UserServiceService, private route: Router,) {}
+  constructor(private formBuilder: FormBuilder, 
+              private snackBar: MatSnackBar, 
+              private userService: UserServiceService, 
+              private route: Router) {}
 
   ngOnInit() {
     this.signInForm = this.formBuilder.group({
@@ -22,7 +26,7 @@ export class SignInComponent implements OnInit {
       }, {});
     }
 
-  signIn=(signInFormValue: { email: any; password: any; })=> {
+  signIn=(signInFormValue: { email:any; password:any; })=> {
     this.submitted = true;
 
     if (this.signInForm.invalid) return;
@@ -32,11 +36,13 @@ export class SignInComponent implements OnInit {
       password: signInFormValue.password,
       service: 'advance'
     }
-        
-    this.userService.loginUser(user).subscribe((response: any) => {
-      console.log("Successful sign in: ", response);
+
+    this.userService.loginUser(user).subscribe((response:any) => {
       localStorage.setItem("token", response.id);
-      this.route.navigate(['/dashboard']);
+      this.snackBar.open("Sign in successful");
+      this.route.navigate(['/dashboard/note']);
+    }, () => {
+      this.snackBar.open("Incorrect email or password");
     });
   }
 }

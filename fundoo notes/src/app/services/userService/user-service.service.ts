@@ -4,25 +4,15 @@ import { HttpServiceService } from '../httpService/http-service.service';
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserServiceService {
+  constructor(private httpService: HttpServiceService) {}
 
-  constructor(private httpService: HttpServiceService) { }
+  registerUser(data:any) { return this.httpService.userPost("user/userSignUp", data); }
 
-  registerUser(data: any) {
-    console.log("Data in user service: ", data);
-    return this.httpService.post("user/userSignUp", data);
-  }
+  loginUser(data:any) { return this.httpService.userPost("user/login", data); }
 
-  loginUser(data: any) {
-    return this.httpService.post("user/login", data);
-  }
+  resetPassword(data:any, token:string) { return this.httpService.encodedPost("user/reset-password", data); }
 
-  resetPassword(resetPasswordData: any,token: any){
-    return this.httpService.encodedPost("user/reset-password", resetPasswordData);
-  }
-
-  forgotPassword(data: any) {
-    return this.httpService.post("user/reset", data);
-  }
-
+  forgotPassword(data:any) { return this.httpService.userPost("user/reset", data); }
 }

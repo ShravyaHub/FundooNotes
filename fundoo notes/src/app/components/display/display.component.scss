@@ -4,4 +4,48 @@ app-icons {
 
 mat-card:hover app-icons{
     display: block;
-  }
+}
+
+.icons-div {
+    height: 20px;
+}
+
+.card-class {
+    width: 210px; 
+    margin-top: 30px; 
+    margin-left: 20px;
+}
+
+.mat-card-list {
+    width: 600px;
+    margin-left:0px;
+}
+
+.card-div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 1070px;
+}
+
+.card-list-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 1070px;
+}
+
+app-icons .active{
+    pointer-events: none;
+}
+
+.delete-icon {
+    background-color: transparent;
+    border: 0px;
+}
+
+.md-dialog-container {
+    background-color: #000;
+}
+

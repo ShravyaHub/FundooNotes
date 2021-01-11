@@ -3,12 +3,18 @@
     background-color: white;
     border: 1px solid grey;
     width: 600px;
-    height: 45px;
+    height: 15px;
     border-radius: 8px;
     outline: none;
     box-shadow:offset 0 0 5px 5px #888;
+    margin-right: 50px;
 }
 
 .note-text {
     outline: none;
+}
+
+.takenote {
+    color: #83868B;
+    font-size: 15px;
 }
